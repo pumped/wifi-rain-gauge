@@ -14,7 +14,7 @@ dataCollector.prototype.setup = function () {
   var that = this;
   setInterval(function(){
     that.getData();
-  },60*1000)
+  },10*1000)
 };
 
 dataCollector.prototype.setupGraph = function () {

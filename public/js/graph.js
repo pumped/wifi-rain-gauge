@@ -55,6 +55,9 @@ RainGraph.prototype.setup = function () {
                   enabled:true,
                   forced:true,
                     units: [[
+                        'minute', // unit name
+                        [30] // allowed multiples
+                    ],[
                         'hour', // unit name
                         [1, 24] // allowed multiples
                     ], [
