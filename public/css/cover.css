@@ -16,6 +16,10 @@ body {
   display:inline;
 }
 
+.rainStats .col-lg-4 {
+  text-align: center;
+}
+
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
@@ -48,11 +52,10 @@ body {
 
 /* Carousel base class */
 #topGraph {
-  height: 500px;
+  /*height: 500px;*/
   margin-bottom: 60px;
-  background-color:#444;
-  padding-top:100px;
-  display:none;
+  /*background-color:#444;*/
+  padding:100px 0;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {

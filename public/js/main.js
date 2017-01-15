@@ -61,28 +61,30 @@ dataCollector.prototype.processData = function () {
     }
   }
 
-  this.rainfallGraph.updateData(this.procData);
+  this.procData["values"] = this.createIntervalData(this.data.rain);
+
   this.updateValues();
 };
 
 dataCollector.prototype.updateValues = function () {
+  this.rainfallGraph.updateData(this.procData.values);
 
   $('#hourlyRainfall .value').html(round(this.procData['hour'],2));
   $('#weeklyRainfall .value').html(round(this.procData['week'],2));
   $('#todayRainfall .value').html(round(this.procData['day'],2));
 };
 
-dataCollector.prototype.createIntervalData = function () {
+dataCollector.prototype.createIntervalData = function (data) {
   var maxTime = 7*24*60*60*1000
   var procTime = Date.now()
 
-  for (var i in this.data.rain) {
-    var time = this.data.rain[i];
-    if (time > maxTime) {
+  var rainData = [];
 
-    }
+  for (var i in data) {
+    rainData.push([data[i]+10*60*60*1000,this.calibration]);
   }
 
+  return rainData;
 }
 
 

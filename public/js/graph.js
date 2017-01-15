@@ -3,44 +3,71 @@ function RainGraph(container) {
 }
 
 RainGraph.prototype.updateData = function(data) {
-  //console.log(data);
+  console.log(data);
+
+  if (this.rainfallGraph) {
+    console.log(this.rainfallGraph.series)
+    this.rainfallGraph.series[0].setData(data);
+  }
+
 }
 
 RainGraph.prototype.setup = function () {
-  var rainfallGraph =  Highcharts.chart(this.container, {
-        title: {
-            text: 'Rainfall',
-            x: -20 //center
-        },
-        chart: {
-           type: 'column'
-       },
-        xAxis: {
-          title: { text: 'Time' }
-        },
-        yAxis: {
-            title: {
-                text: 'Rainfall (mm)'
+  data = [];
+  this.rainfallGraph = Highcharts.stockChart('rainGraphContainer', {
+            chart: {
+                alignTicks: false
             },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
+
+            rangeSelector: {
+                selected: 1
+            },
+
+            title: {
+                text: ''
+            },
+
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: { // don't display the dummy year
+                    month: '%e. %b',
+                    year: '%b'
+                },
+                ordinal: false,
+                title: {
+                    text: 'Date'
+                }
+            },
+
+            plotOptions: {
+                 spline: {
+                     marker: {
+                         enabled: true
+                     }
+                 }
+             },
+
+            series: [{
+                type: 'column',
+                name: 'Rainfall',
+                data: data,
+                dataGrouping: {
+                  enabled:true,
+                  forced:true,
+                    units: [[
+                        'hour', // unit name
+                        [1, 24] // allowed multiples
+                    ], [
+                        'week',
+                        [1]
+                    ], [
+                        'month',
+                        [1,6]
+                    ], [
+                        'year',
+                        [1]
+                    ]]
+                }
             }]
-        },
-        tooltip: {
-            valueSuffix: 'mm'
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0,
-            enabled:false
-        },
-        series: [{
-            name: 'Rainfall',
-            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-        }]
-    });
+        });
 };

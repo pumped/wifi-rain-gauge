@@ -67,8 +67,39 @@
 
       <!-- Carousel
       ================================================== -->
+      <div class="container">
+        <h1>Rainfall</h1>
+      </div>
+
       <div id="topGraph">
-        <div id="rainGraphContainer"></div>
+        <div class="container">
+
+          <div class="row rainStats">
+            <div class="col-lg-4">
+              <div id="weeklyRainfall" class="largeValue">
+                <div class="value">0</div>
+                <div class="units">mm</div>
+              </div>
+              <div class="title">This Week</div>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <div id="todayRainfall" class="largeValue">
+                <div class="value">0</div>
+                <div class="units">mm</div>
+              </div>
+              <div class="title">Today</div>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <div id="hourlyRainfall" class="largeValue">
+                <div class="value">0</div>
+                <div class="units">mm</div>
+              </div>
+              <div class="title">Last Hour</div>
+
+            </div><!-- /.col-lg-4 -->
+          </div>
+        </div>
+
 
       </div><!-- /.carousel -->
 
@@ -80,30 +111,13 @@
       <div class="container marketing">
 
         <!-- Three columns of text below the carousel -->
-        <div class="row">
-          <div class="col-lg-4">
-            <div id="weeklyRainfall" class="largeValue">
-              <div class="value">0</div>
-              <div class="units">mm</div>
-            </div>
-            <h2>This Week</h2>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <div id="todayRainfall" class="largeValue">
-              <div class="value">0</div>
-              <div class="units">mm</div>
-            </div>
-            <h2>Today</h2>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <div id="hourlyRainfall" class="largeValue">
-              <div class="value">0</div>
-              <div class="units">mm</div>
-            </div>
-            <h2>Last Hour</h2>
+<!-- /.row -->
 
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div id="rainGraphContainer"></div>
+          </div>
+        </div>
 
 
 
@@ -115,7 +129,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/highcharts.js"></script>
+    <script src="js/highstock.js"></script>
+    <script src="js/highstock-more.js"></script>
 
     <script src="js/graph.js"></script>
     <script src="js/main.js"></script>
