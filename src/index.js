@@ -37,9 +37,7 @@ function loadData() {
   });
 }
 
-app.get('/', (request, response) => {
-  response.send('Hello from Express!')
-})
+app.use('/', express.static('public'))
 
 app.get('/data', (request, response) => {
   var dString = JSON.stringify(sensorData);
