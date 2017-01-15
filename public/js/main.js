@@ -14,7 +14,7 @@ dataCollector.prototype.setup = function () {
   var that = this;
   setInterval(function(){
     that.getData();
-  },10*1000)
+  },60*1000)
 };
 
 dataCollector.prototype.setupGraph = function () {
@@ -67,9 +67,9 @@ dataCollector.prototype.processData = function () {
 
 dataCollector.prototype.updateValues = function () {
 
-  $('#hourlyRainfall .value').html(this.procData['hour']);
-  $('#weeklyRainfall .value').html(this.procData['week']);
-  $('#todayRainfall .value').html(this.procData['day']);
+  $('#hourlyRainfall .value').html(round(this.procData['hour'],2));
+  $('#weeklyRainfall .value').html(round(this.procData['week'],2));
+  $('#todayRainfall .value').html(round(this.procData['day'],2));
 };
 
 dataCollector.prototype.createIntervalData = function () {
@@ -88,3 +88,7 @@ dataCollector.prototype.createIntervalData = function () {
 
 var app = new dataCollector();
 app.setup();
+
+function round(value, decimals) {
+    return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+}
