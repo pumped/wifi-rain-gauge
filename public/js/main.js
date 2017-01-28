@@ -77,12 +77,15 @@ dataCollector.prototype.updateValues = function () {
 dataCollector.prototype.createIntervalData = function (data) {
   var maxTime = 7*24*60*60*1000
   var procTime = Date.now()
+  var tzCorrection = 10*60*60*1000;
 
   var rainData = [];
 
   for (var i in data) {
-    rainData.push([data[i]+10*60*60*1000,this.calibration]);
+    rainData.push([data[i]+tzCorrection,this.calibration]);
   }
+
+  rainData.push([procTime + tzCorrection,0]);
 
   return rainData;
 }

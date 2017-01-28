@@ -40,12 +40,36 @@ RainGraph.prototype.setup = function () {
             },
 
             plotOptions: {
-                 spline: {
-                     marker: {
-                         enabled: true
-                     }
+                 column: {
+                     minPointWidth:5,
                  }
              },
+
+             rangeSelector: {
+                buttons: [{
+                    type: 'day',
+                    count: 1,
+                    text: 'Day'
+                }, {
+                    type: 'week',
+                    count: 1,
+                    text: 'Week'
+                }, {
+                    type: 'month',
+                    count: 1,
+                    text: 'Month'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: 'Year'
+                }, {
+                    type: 'all',
+                    count: 1,
+                    text: 'All'
+                }],
+                selected: 1,
+                inputEnabled: false
+            },
 
             series: [{
                 type: 'column',
@@ -54,12 +78,13 @@ RainGraph.prototype.setup = function () {
                 dataGrouping: {
                   enabled:true,
                   forced:true,
+                  groupPixelWidth: 100,
                     units: [[
                         'minute', // unit name
                         [30] // allowed multiples
                     ],[
                         'hour', // unit name
-                        [1, 24] // allowed multiples
+                        [1, 12, 6, 24] // allowed multiples
                     ], [
                         'week',
                         [1]
